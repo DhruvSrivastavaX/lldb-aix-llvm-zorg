@@ -1312,6 +1312,23 @@ all = [
                         '-DCMAKE_C_COMPILER=clang',
                         '-DCMAKE_CXX_COMPILER=clang++'])},
 
+    {'name' : "lldb-ppc64-aix",
+    'tags'  : ["lldb"],
+    'workernames' : ["lldb-ppc64-aix"],
+    'builddir': "lldb-ppc64-aix",
+    'factory' : LLDBBuilder.getLLDBCMakeBuildFactory(
+                    test=True,
+                    extra_cmake_args=[
+                        '-DLLVM_ENABLE_ASSERTIONS=True',
+                        '-DLLVM_USE_LINKER=gold',
+                        '-DLLDB_ENABLE_PYTHON=True',
+                        '-DLLDB_TEST_USER_ARGS=-t',
+                        '-DLLVM_TARGETS_TO_BUILD=PowerPC',
+                        '-DLLDB_ENABLE_CURSES=0',
+                        '-DPYTHON_EXECUTABLE=/usr/bin/python3',
+                        '-DCMAKE_C_COMPILER=/opt/IBM/openxlC/17.1.1/bin/ibm-clang_r',
+                        '-DCMAKE_CXX_COMPILER=/opt/IBM/openxlC/17.1.1/bin/ibm-clang++_r'])},
+
     {'name' : "lldb-aarch64-ubuntu",
     'tags'  : ["lldb"],
     'workernames' : ["linaro-lldb-aarch64-ubuntu"],
